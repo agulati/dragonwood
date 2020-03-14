@@ -7,4 +7,8 @@ class Game
     @landscape        = Landscape.new(dragonwood_deck: dragonwood_deck, game: self)
     @player           = Player.new(name: player_name, adventurer_deck: adventurer_deck, game: self)
   end
+
+  def as_json(_)
+    { game_id: object_id }
+  end
 end
