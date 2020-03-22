@@ -1,0 +1,16 @@
+-
+  event: "Sunny Day"
+  description: "All players draw 2"
+  handler: :sunny_day
+-
+  event: "Thunder Storm"
+  description: "All palyers discard 1"
+  handler: :thunder_storm
+-
+  event: "Quicksand"
+  description: "Replace all enhancements in Landscape"
+  handler: :quicksand
+-
+  event: "Wind Storm"
+  description: "Pass 1 to the right"
+  handler: :wind_storm
