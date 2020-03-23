@@ -2,7 +2,7 @@ module Errors
   class DragonwoodError < StandardError
     attr_reader :http_status
 
-    def initialize(message:, http_status: :internal_server_error)
+    def initialize (message:, http_status: :internal_server_error)
       super(message)
       set_backtrace(backtrace)
       @http_status = http_status
@@ -22,7 +22,7 @@ module Errors
   end
 
   class ValidationError < DragonwoodError
-    def initialize(exception)
+    def initialize (exception)
       super(message: exception.message, http_status: :bad_request)
     end
   end

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   rescue_from Errors::DragonwoodError,      with: :render_error
   rescue_from ActiveRecord::RecordInvalid,  with: :render_validation_error
-  rescue_from StandardError,                with: :render_error
+  # rescue_from StandardError,                with: :render_error
 
   before_action :authenticate_request
 

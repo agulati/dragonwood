@@ -1,21 +1,33 @@
 class GameState < ApplicationRecord
-  serialize :adventurer_deck, JSON
-  serialize :dragonwood_deck, JSON
-  serialize :landscape_deck,  JSON
-  serialize :user_hand,       JSON
-  serialize :bot_hand,        JSON
+  serialize :adventurer_deck
+  serialize :dragonwood_deck
+  serialize :landscape
+  serialize :user_hand
+  serialize :bot_hand
 
   belongs_to :game
 
-  before_create :initialize_decks_and_hands
+  before_create :initialize_state
 
   private
 
-  def initialize_decks_and_hands
-    self.adventurer_deck = AdventurerDeck.new
-    self.dragonwood_deck = DragonwoodDeck.new
-    self.landscape_deck = {}
-    self.user_hand = {}
-    self.bot_hand = {}
+  def initialize_decks
+    self.adventurer_deck = Decks::AdventurerDeck.new
+    self.dragonwood_deck = Decks::DragonwoodDeck.new(prune: true)
+  end
+
+  def initialize_board
+    self.landscape = Board::Landscape.new(dragonwood_deck: dragonwood_deck)
+  end
+
+  def initialize_hands
+    self.user_hand = Hands::UserHand.new
+    self.bot_hand  = Hands::BotHand.new
+  end
+
+  def initialize_state
+    initialize_decks
+    initialize_board
+    initialize_hands
   end
 end

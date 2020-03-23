@@ -7,6 +7,10 @@ class Game < ApplicationRecord
 
   validates :user, presence: true
 
+  def current_state
+    game_states.last
+  end
+
   private
 
   def default_to_not_complete

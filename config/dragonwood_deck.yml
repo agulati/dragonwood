@@ -1,0 +1,211 @@
+-
+  type: "creature"
+  qty: 4
+  creature: "Spooky Spider"
+  strike: 3
+  stomp: 3
+  scream: 4
+  points: 1
+-
+  type: "creature"
+  qty: 4
+  creature: "Crazy Bat"
+  strike: 4
+  stomp: 3
+  scream: 3
+  points: 1
+-
+  type: "creature"
+  qty: 2
+  creature: "Giggling Goblin"
+  strike: 7
+  stomp: 5
+  scream: 5
+  points: 2
+-
+  type: "creature"
+  qty: 2
+  creature: "Fire Ants"
+  strike: 7
+  stomp: 4
+  scream: 6
+  points: 2
+-
+  type: "creature"
+  qty: 2
+  creature: "Wasps' Nest"
+  strike: 5
+  stomp: 6
+  scream: 7
+  points: 2
+-
+  type: "creature"
+  qty: 2
+  creature: "Hungry Bear"
+  strike: 7
+  stomp: 6
+  scream: 9
+  points: 3
+-
+  type: "creature"
+  qty: 2
+  creature: "Pack of Wolves"
+  strike: 6
+  stomp: 7
+  scream: 9
+  points: 3
+-
+  type: "creature"
+  qty: 2
+  creature: "Fierce Jaguar"
+  strike: 8
+  stomp: 6
+  scream: 8
+  points: 3
+-
+  type: "creature"
+  qty: 2
+  creature: "Wild Boar"
+  strike: 8
+  stomp: 7
+  scream: 7
+  points: 3
+-
+  type: "creature"
+  qty: 1
+  creature: "Grumpy Troll"
+  strike: 9
+  stomp: 11
+  scream: 9
+  points: 4
+-
+  type: "creature"
+  qty: 1
+  creature: "Gigantic Python"
+  strike: 11
+  stomp: 8
+  scream: 10
+  points: 4
+-
+  type: "creature"
+  qty: 1
+  creature: "Secret Shadow"
+  strike: 10
+  stomp: 8
+  scream: 11
+  points: 4
+-
+  type: "creature"
+  qty: 1
+  creature: "Angry Ogre"
+  strike: 12
+  stomp: 9
+  scream: 14
+  points: 5
+-
+  type: "creature"
+  qty: 1
+  creature: "Gooey Glob"
+  strike: 14
+  stomp: 9
+  scream: 10
+  points: 5
+-
+  type: "creature"
+  qty: 1
+  creature: "Blue Dragon"
+  strike: 13
+  stomp: 10
+  scream: 13
+  points: 6
+-
+  type: "creature"
+  qty: 1
+  creature: "Orange Dragon"
+  strike: 15
+  stomp: 11
+  scream: 12
+  points: 7
+-
+  type: "enhancement"
+  enhancement: "Lucky Mushroom"
+  strike: 7
+  stomp: 5
+  scream: 7
+  description: "Re-roll 1 die"
+-
+  type: "enhancement"
+  enhancement: "Ghost Disguise"
+  strike: 8
+  stomp: 7
+  scream: 10
+  description: "+2 scream"
+-
+  type: "enhancement"
+  enhancement: "Silver Sword"
+  strike: 10
+  stomp: 6
+  scream: 7
+  description: "+2 strike"
+-
+  type: "enhancement"
+  enhancement: "Bucket of Spinach"
+  strike: 7
+  stomp: 10
+  scream: 8
+  description: "+2 stomp"
+-
+  type: "enhancement"
+  enhancement: "Cloak of Darkness"
+  strike: 11
+  stomp: 9
+  scream: 11
+  description: "+2 all captures"
+-
+  type: "enhancement"
+  enhancement: "Friendly Bunny"
+  strike: 4
+  stomp: 4
+  scream: 4
+  description: "1x extra die"
+-
+  type: "enhancement"
+  enhancement: "Magical Unicorn"
+  strike: 8
+  stomp: 6
+  scream: 8
+  description: "+1 all captures"
+-
+  type: "enhancement"
+  enhancement: "Lighnting Bolt"
+  strike: 7
+  stomp: 5
+  scream: 7
+  description: "1x +4 all captures"
+-
+  type: "enhancement"
+  enhancement: "Charmed Potion"
+  strike: 5
+  stomp: 4
+  scream: 5
+  description: "1x act as any adventure card"
+-
+  type: "event"
+  event: "Sunny Day"
+  description: "All players draw 2"
+  handler: :sunny_day
+-
+  type: "event"
+  event: "Thunder Storm"
+  description: "All palyers discard 1"
+  handler: :thunder_storm
+-
+  type: "event"
+  event: "Quicksand"
+  description: "Replace all enhancements in Landscape"
+  handler: :quicksand
+-
+  type: "event"
+  event: "Wind Storm"
+  description: "Pass 1 to the right"
+  handler: :wind_storm

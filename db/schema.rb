@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_010936) do
     t.uuid "game_id", null: false
     t.text "adventurer_deck", null: false
     t.text "dragonwood_deck", null: false
-    t.text "landscape_deck", null: false
+    t.text "landscape", null: false
     t.text "user_hand", null: false
     t.text "bot_hand", null: false
     t.datetime "created_at", precision: 6, null: false
