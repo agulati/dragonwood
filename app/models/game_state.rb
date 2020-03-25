@@ -3,7 +3,6 @@ class GameState < ApplicationRecord
   serialize :dragonwood_deck
   serialize :landscape
   serialize :user_hand
-  serialize :bot_hand
 
   belongs_to :game
 
@@ -21,8 +20,7 @@ class GameState < ApplicationRecord
   end
 
   def initialize_hands
-    self.user_hand = Hands::UserHand.new
-    self.bot_hand  = Hands::BotHand.new
+    self.user_hand = Hands::UserHand.new(adventurer_deck: adventurer_deck)
   end
 
   def initialize_state

@@ -2,6 +2,7 @@ class Api::V1::UsersController < ApplicationController
   skip_before_action :authenticate_request, only: [:create]
 
   before_action :check_password, only: [:create]
+  before_action :check_game_user, only: [:show]
 
   def create
     user = User.create!(user_params)
@@ -9,7 +10,19 @@ class Api::V1::UsersController < ApplicationController
     render json: new_user_response(user, command), status: :created
   end
 
+  def show
+    render json: game.user_hand
+  end
+
   private
+
+  def game
+    @game ||= Game.find(params[:game_id])
+  end
+
+  def check_game_user
+    raise Errors::GameNotFoundError unless game.user == current_user
+  end
 
   def new_user_response(user, command)
     UserSerializer.new(user).as_json.merge({ auth_token: command.result })

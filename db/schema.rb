@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2020_03_22_010936) do
     t.text "dragonwood_deck", null: false
     t.text "landscape", null: false
     t.text "user_hand", null: false
-    t.text "bot_hand", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["game_id"], name: "index_game_states_on_game_id"

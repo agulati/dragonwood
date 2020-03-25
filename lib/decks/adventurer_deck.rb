@@ -11,6 +11,22 @@ module Decks
       @cards = adventurer_cards + lady_bug_cards
     end
 
+    def deal (num_cards)
+      dealt = []
+      while dealt.length < num_cards do
+        card = cards.sample
+        if card.is_a?(Cards::LadyBugCard)
+          dealt += deal(Cards::LadyBugCard::BONUS_CARD_COUNT)
+          num_cards += 1
+        else
+          dealt << card
+        end
+        cards.delete(card)
+      end
+
+      dealt
+    end
+
     private
 
     def adventurer_cards

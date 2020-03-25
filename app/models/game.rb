@@ -11,6 +11,10 @@ class Game < ApplicationRecord
     game_states.last
   end
 
+  def user_hand
+    current_state.user_hand
+  end
+
   private
 
   def default_to_not_complete

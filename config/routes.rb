@@ -3,9 +3,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      post "authenticate", to: "authentication#authenticate"
-
-      resources :games, only: [:create, :show]
+      resource :session, only: [:create]
+      resources :games, only: [:create, :show] do
+        resource :user, only: [:show]
+      end
       resources :users, only: [:create]
     end
   end
