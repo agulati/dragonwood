@@ -1,9 +1,5 @@
 class GameSerializer < ActiveModel::Serializer
-  attributes :id, :board
+  attributes :id, :landscape, :user_hand
 
   has_one :user
-
-  def board
-    GameStateSerializer.new(object.current_state)
-  end
 end

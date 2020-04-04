@@ -1,27 +1,38 @@
 class Game < ApplicationRecord
-  belongs_to  :user
-  has_many    :game_states
+  serialize :adventurer_deck
+  serialize :dragonwood_deck
+  serialize :landscape
+  serialize :user_hand
 
-  before_create :default_to_not_complete
-  after_create :initialize_state
+  belongs_to  :user
+
+  before_create :setup_game
 
   validates :user, presence: true
 
-  def current_state
-    game_states.last
-  end
-
-  def user_hand
-    current_state.user_hand
-  end
-
   private
+
+  def setup_game
+    initialize_decks
+    initialize_board
+    initialize_hands
+    default_to_not_complete
+  end
 
   def default_to_not_complete
     self.completed = false if completed.nil?
   end
 
-  def initialize_state
-    self.game_states << GameState.create!(game: self)
+  def initialize_decks
+    self.adventurer_deck = Decks::AdventurerDeck.new
+    self.dragonwood_deck = Decks::DragonwoodDeck.new(prune: true)
+  end
+
+  def initialize_board
+    self.landscape = Board::Landscape.new(deck: dragonwood_deck)
+  end
+
+  def initialize_hands
+    self.user_hand = Hands::UserHand.new(deck: adventurer_deck)
   end
 end

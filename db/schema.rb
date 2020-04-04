@@ -10,26 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_010936) do
+ActiveRecord::Schema.define(version: 2020_03_21_143408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "game_states", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "game_id", null: false
+  create_table "games", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.boolean "completed", null: false
     t.text "adventurer_deck", null: false
     t.text "dragonwood_deck", null: false
     t.text "landscape", null: false
     t.text "user_hand", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["game_id"], name: "index_game_states_on_game_id"
-  end
-
-  create_table "games", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "user_id", null: false
-    t.boolean "completed", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_games_on_user_id"
@@ -44,6 +37,5 @@ ActiveRecord::Schema.define(version: 2020_03_22_010936) do
     t.index ["email"], name: "index_users_on_email"
   end
 
-  add_foreign_key "game_states", "games"
   add_foreign_key "games", "users"
 end

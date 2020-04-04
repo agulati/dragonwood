@@ -15,13 +15,15 @@ module Decks
       dealt = []
       while dealt.length < num_cards do
         card = cards.sample
+        cards.delete(card)
+
         if card.is_a?(Cards::LadyBugCard)
-          dealt += deal(Cards::LadyBugCard::BONUS_CARD_COUNT)
-          num_cards += 1
+          bonus_deal  = deal(Cards::LadyBugCard::BONUS_CARD_COUNT)
+          dealt       += bonus_deal
+          num_cards   += (bonus_deal.length - 1)
         else
           dealt << card
         end
-        cards.delete(card)
       end
 
       dealt

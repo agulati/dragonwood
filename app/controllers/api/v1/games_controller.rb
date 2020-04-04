@@ -1,5 +1,5 @@
 class Api::V1::GamesController < ApplicationController
-  before_action :check_for_game, only: [:show]
+  before_action :check_game, only: [:show]
 
   def create
     render json: Game.create!(user: current_user), status: :created
@@ -11,11 +11,7 @@ class Api::V1::GamesController < ApplicationController
 
   private
 
-  def check_for_game
-    raise Errors::GameNotFoundError.new if game.nil?
-  end
-
-  def game
-    @game ||= Game.find_by(id: params[:id], user: current_user)
+  def game_id
+    params[:id]
   end
 end

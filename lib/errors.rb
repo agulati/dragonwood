@@ -32,4 +32,12 @@ module Errors
       super(message: "Game Not Found", http_status: :not_found)
     end
   end
+
+  class HandTooLargeError < DragonwoodError
+    def initialize(max_cards:)
+      super(message: "You have too many cards in your hand (max #{max_cards})", http_status: :failed_dependency)
+    end
+  end
+
+
 end

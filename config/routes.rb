@@ -3,11 +3,14 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resource :session, only: [:create]
-      resources :games, only: [:create, :show] do
-        resource :user, only: [:show]
+      resource  :session, only: [:create]
+      resources :codes,   only: [:index]
+      resources :users,   only: [:create]
+      resources :games,   only: [:create, :show] do
+        resource :user,     only: [:show]
+        resource :turn,     only: [:create]
+        resource :discard,  only: [:create]
       end
-      resources :users, only: [:create]
     end
   end
 end

@@ -5,8 +5,8 @@ module Board
 
     attr_reader :cards
 
-    def initialize (dragonwood_deck: nil)
-      @cards = dragonwood_deck.deal(LANDSCAPE_SIZE)
+    def initialize (deck: nil)
+      @cards = deck.deal(LANDSCAPE_SIZE)
     end
   end
 end
