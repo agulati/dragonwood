@@ -39,5 +39,33 @@ module Errors
     end
   end
 
+  class InvalidStomp < DragonwoodError
+    def initialize
+      super(message: "All cards must have the same number for a Stomp attack.", http_status: :failed_dependency)
+    end
+  end
 
+  class InvalidStrike < DragonwoodError
+    def initialize
+      super(message: "All cards must form a sequential series for a Strike attack.", http_status: :failed_dependency)
+    end
+  end
+
+  class InvalidScream < DragonwoodError
+    def initialize
+      super(message: "All cards must have the same color for a Scream attack.", http_status: :failed_dependency)
+    end
+  end
+
+  class CardNotInHandError < DragonwoodError
+    def initialize(color:, value:)
+      super(message: "You don't have the card #{color.titleize} #{value}", http_status: :failed_dependency)
+    end
+  end
+
+  class CardNotOnBoard < DragonwoodError
+    def initialize(card_type:, card_name:)
+      super(message: "The #{card_type} Card '#{card_name}' is not on the Landscape", http_status: :failed_dependency)
+    end
+  end
 end

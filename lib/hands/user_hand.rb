@@ -4,10 +4,12 @@ module Hands
     INITIAL_SIZE = 5
     MAX_SIZE = 9
 
-    attr_accessor :cards
+    attr_accessor :cards, :enhancements, :creatures
 
     def initialize(deck:)
-      self.cards = deck.deal(INITIAL_SIZE)
+      self.cards        = deck.deal(INITIAL_SIZE)
+      self.enhancements = []
+      self.creatures    = []
     end
 
     def draw_card(deck:)

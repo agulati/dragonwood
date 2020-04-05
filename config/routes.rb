@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :users,   only: [:create]
       resources :games,   only: [:create, :show] do
         resource :user,     only: [:show]
-        resource :turn,     only: [:create]
+        resource :turn,     only: [:create, :update]
         resource :discard,  only: [:create]
       end
     end
